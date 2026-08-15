@@ -48,24 +48,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-const subscribeForm = document.getElementById('subscribe-form');
-if (subscribeForm) {
-    subscribeForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const firstName = document.getElementById('first-name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        if (!firstName || !email) {
-            alert('Please fill in all fields.');
-            return;
-        }
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Please enter a valid email address.');
-            return;
-        }
-        alert('Thank you, ' + firstName + '! You are subscribed to Shawntra. (Note: This is a demo - connect an email service to collect real subscriptions.)');
-        subscribeForm.reset();
-    });
-}
-
 console.log('Shawntra — A message in a bottle. Built with ❤️ for Sean Barnes.');

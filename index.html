@@ -1,147 +1,698 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shawntra | Sean Barnes</title>
-    <meta name="description" content="Shawntra — A message in a bottle. Practical ideas on Learning & Development, leadership, workplace psychology and AI for professionals who develop people.">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📬</text></svg>">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Shawntra — A message in a bottle. Practical ideas on Learning & Development, leadership, workplace psychology and AI for professionals who develop people.">
+<title>Shawntra | Sean Barnes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C2B33;
+    --paper:#FAF6EE;
+    --paper-deep:#F1EADC;
+    --amber:#D98E3F;
+    --amber-deep:#B8722A;
+    --sage:#7C9885;
+    --charcoal:#3A3A38;
+    --line: rgba(28,43,51,0.12);
+    --max: 780px;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--charcoal);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces',Georgia,serif;
+    color:var(--ink);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  a{ color:var(--amber-deep); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--amber);
+    outline-offset:3px;
+  }
+
+  img{ max-width:100%; display:block; }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  header.site{
+    position:sticky; top:0; z-index:40;
+    background:rgba(250,246,238,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:16px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:20px;
+    letter-spacing:0.06em;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .brand:hover{ text-decoration:none; opacity:0.8; }
+  nav.links{
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+  }
+  nav.links a{
+    color:var(--charcoal);
+    font-size:14.5px;
+    font-weight:500;
+  }
+  nav.links a:hover{ color:var(--amber-deep); text-decoration:none; }
+
+  @media (max-width:640px){
+    nav.links{ display:none; }
+  }
+
+  .hero{
+    position:relative;
+    padding:88px 0 64px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-120px; right:-160px;
+    width:420px; height:420px;
+    background:radial-gradient(circle, rgba(217,142,63,0.16) 0%, rgba(217,142,63,0) 70%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--sage);
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--amber);
+  }
+  .hero h1{
+    font-size:clamp(40px, 7vw, 60px);
+    line-height:1.05;
+    font-weight:600;
+    max-width:11ch;
+  }
+  .hero .tagline{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:21px;
+    color:var(--amber-deep);
+    margin-top:14px;
+  }
+  .hero p.lede{
+    margin-top:20px;
+    font-size:18px;
+    line-height:1.7;
+    color:var(--charcoal);
+    max-width:52ch;
+  }
+  .hero-ctas{
+    margin-top:32px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:13px 26px;
+    border-radius:3px;
+    font-weight:600;
+    font-size:15px;
+    cursor:pointer;
+    border:1.5px solid transparent;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover{ text-decoration:none; }
+  .btn-primary{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .btn-primary:hover{
+    transform:translateY(-1px);
+    box-shadow:0 6px 16px rgba(28,43,51,0.22);
+  }
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border-color:var(--ink);
+  }
+  .btn-ghost:hover{
+    background:var(--ink);
+    color:var(--paper);
+  }
+
+  .deckle{
+    width:100%;
+    height:22px;
+    margin:0 0;
+    display:block;
+  }
+
+  section{
+    padding:56px 0;
+  }
+  section.tight{ padding:40px 0; }
+
+  .section-head{
+    margin-bottom:34px;
+  }
+  .section-head .kicker{
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--sage);
+    display:block;
+    margin-bottom:10px;
+  }
+  .section-head h2{
+    font-size:30px;
+    font-weight:600;
+  }
+
+  #about p{ max-width:64ch; font-size:17.5px; }
+  #about strong{ color:var(--ink); }
+
+  .topics-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media (max-width:700px){
+    .topics-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media (max-width:460px){
+    .topics-grid{ grid-template-columns:1fr; }
+  }
+  .topic-card{
+    background:var(--paper);
+    padding:28px 24px;
+    transition:background 0.2s ease;
+  }
+  .topic-card:hover{
+    background:var(--paper-deep);
+  }
+  .topic-card .mark{
+    width:34px; height:34px;
+    border-radius:50%;
+    background:var(--sage);
+    color:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:15px;
+    margin-bottom:16px;
+  }
+  .topic-card h3{
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .topic-card p{
+    font-size:14.5px;
+    color:var(--charcoal);
+    margin:0;
+    line-height:1.6;
+  }
+
+  .issue-feature{
+    border:1px solid var(--line);
+    border-left:4px solid var(--amber);
+    background:var(--paper-deep);
+    padding:36px;
+    border-radius:2px;
+  }
+  @media (max-width:600px){ .issue-feature{ padding:26px 22px; } }
+  .issue-feature .badge{
+    display:inline-block;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    color:var(--paper);
+    background:var(--amber-deep);
+    padding:4px 10px;
+    border-radius:2px;
+    margin-bottom:16px;
+  }
+  .issue-feature h3{
+    font-size:25px;
+    line-height:1.3;
+    margin-bottom:14px;
+  }
+  .issue-feature p{
+    color:var(--charcoal);
+    font-size:16px;
+    max-width:58ch;
+    margin-bottom:20px;
+  }
+
+  .idea-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .idea-row{
+    display:grid;
+    grid-template-columns:56px 1fr auto;
+    align-items:start;
+    gap:20px;
+    padding:26px 0;
+    border-top:1px solid var(--line);
+  }
+  .idea-row:last-child{ border-bottom:1px solid var(--line); }
+  @media (max-width:560px){
+    .idea-row{ grid-template-columns:40px 1fr; }
+    .idea-row .arrow{ display:none; }
+  }
+  .idea-row .num{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:22px;
+    color:var(--amber);
+  }
+  .idea-row h3{
+    font-size:19px;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .idea-row p{
+    font-size:15px;
+    color:var(--charcoal);
+    margin:0;
+  }
+  .idea-row .arrow{
+    align-self:center;
+    font-size:20px;
+    color:var(--ink);
+  }
+
+  .sean-panel{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:42px;
+    align-items:start;
+  }
+  @media (max-width:600px){
+    .sean-panel{ grid-template-columns:1fr; justify-items:center; text-align:center; }
+    .sean-panel .sean-text{ text-align:left; }
+  }
+  .seal{
+    position:relative;
+    width:180px;
+    height:180px;
+  }
+  .seal img{
+    width:180px; height:180px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid var(--paper);
+    box-shadow:0 0 0 2px var(--amber), 0 12px 28px rgba(28,43,51,0.22);
+  }
+  .sean-text h3{
+    font-size:22px;
+    margin-bottom:4px;
+  }
+  .sean-text .role{
+    font-size:14px;
+    color:var(--amber-deep);
+    font-weight:600;
+    letter-spacing:0.02em;
+    margin-bottom:16px;
+  }
+  .sean-text p{
+    font-size:16px;
+    color:var(--charcoal);
+    max-width:60ch;
+  }
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:18px 0 22px;
+  }
+  .tag{
+    font-size:12.5px;
+    font-weight:600;
+    padding:6px 12px;
+    border-radius:20px;
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    color:var(--ink);
+  }
+
+  .subscribe-panel{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:4px;
+    padding:52px 40px;
+    text-align:center;
+  }
+  @media (max-width:600px){ .subscribe-panel{ padding:40px 24px; } }
+  .subscribe-panel h2{
+    color:var(--paper);
+    font-size:28px;
+    margin-bottom:10px;
+  }
+  .subscribe-panel p{
+    color:rgba(250,246,238,0.75);
+    font-size:16px;
+    max-width:44ch;
+    margin:0 auto 26px;
+  }
+  .subscribe-panel .btn-primary{
+    background:var(--amber);
+    color:var(--ink);
+  }
+  .subscribe-panel .btn-primary:hover{
+    box-shadow:0 6px 20px rgba(217,142,63,0.35);
+  }
+  .fineprint{
+    margin-top:18px;
+    font-size:12.5px;
+    color:rgba(250,246,238,0.5);
+  }
+
+  .archive-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    padding:20px 0;
+    border-top:1px solid var(--line);
+  }
+  .archive-item:last-child{ border-bottom:1px solid var(--line); }
+  .archive-item .meta{
+    font-size:13px;
+    color:var(--sage);
+    font-weight:600;
+    letter-spacing:0.04em;
+    white-space:nowrap;
+  }
+  .archive-item h3{
+    font-size:16.5px;
+    font-weight:600;
+    margin:4px 0 0;
+  }
+  @media (max-width:560px){
+    .archive-item{ flex-direction:column; }
+  }
+
+  footer.site{
+    border-top:1px solid var(--line);
+    padding:40px 0 60px;
+  }
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .footer-brand{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:17px;
+    color:var(--ink);
+  }
+  .footer-sub{
+    font-size:13px;
+    color:var(--charcoal);
+    opacity:0.7;
+    margin-top:4px;
+  }
+  .footer-links{
+    display:flex;
+    gap:20px;
+    font-size:14px;
+  }
+  .copyright{
+    margin-top:26px;
+    font-size:12.5px;
+    color:var(--charcoal);
+    opacity:0.55;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .btn{ transition:none; }
+  }
+</style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="nav-logo"><span class="logo-text">SHAWNTRA</span></a>
-            <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#topics">Topics</a></li>
-                <li><a href="#archive">Archive</a></li>
-                <li><a href="#about-sean">About Sean</a></li>
-                <li><a href="#subscribe" class="nav-cta">Subscribe</a></li>
-            </ul>
-            <button class="mobile-menu-toggle"><span></span><span></span><span></span></button>
-        </div>
+
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="#top">SHAWNTRA</a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#topics">Topics</a>
+      <a href="#archive">Archive</a>
+      <a href="#about-sean">About Sean</a>
+      <a href="#subscribe">Subscribe</a>
     </nav>
+  </div>
+</header>
 
-    <header class="hero">
-        <div class="container hero-content">
-            <h1 class="hero-title">SHAWNTRA</h1>
-            <p class="hero-tagline">A message in a bottle</p>
-            <p class="hero-intro">Practical ideas, frameworks and experiments for people who develop people — from better learning experiences and leadership conversations to using AI without losing the human side of work.</p>
-            <div class="hero-cta">
-                <a href="#subscribe" class="btn btn-primary">SUBSCRIBE FREE</a>
-                <a href="#latest" class="btn btn-secondary">READ THE LATEST</a>
-            </div>
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span> A newsletter for people who develop people</span>
+      <h1>Shawntra</h1>
+      <p class="tagline">A message in a bottle.</p>
+      <p class="lede">Practical ideas, frameworks and experiments for people who develop people — from better learning experiences and leadership conversations to using AI without losing the human side of work.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#subscribe">Subscribe free</a>
+        <a class="btn btn-ghost" href="#latest">Read the latest</a>
+      </div>
+    </div>
+  </section>
+
+  <svg class="deckle" viewBox="0 0 1200 22" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,0 L1200,0 L1200,10 L1180,16 L1160,8 L1140,18 L1120,6 L1100,14 L1080,4 L1060,20 L1040,10 L1020,16 L1000,6 L980,18 L960,8 L940,14 L920,4 L900,20 L880,10 L860,16 L840,6 L820,18 L800,8 L780,14 L760,4 L740,20 L720,10 L700,16 L680,6 L660,18 L640,8 L620,14 L600,4 L580,20 L560,10 L540,16 L520,6 L500,18 L480,8 L460,14 L440,4 L420,20 L400,10 L380,16 L360,6 L340,18 L320,8 L300,14 L280,4 L260,20 L240,10 L220,16 L200,6 L180,18 L160,8 L140,14 L120,4 L100,20 L80,10 L60,16 L40,6 L20,18 L0,10 Z" fill="#F1EADC"/>
+  </svg>
+
+  <section id="about" class="tight">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">About the newsletter</span>
+        <h2>The workplace is changing quickly</h2>
+      </div>
+      <p>AI is changing how we work. Leadership expectations are shifting. Learning is becoming more personalised. Employees expect more from development. And L&amp;D professionals are being asked to deliver more with less.</p>
+      <p><strong>Shawntra explores what actually works</strong> — useful ideas for people who develop people.</p>
+    </div>
+  </section>
+
+  <section id="topics">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">What you'll find here</span>
+        <h2>Six threads, one thread of thought</h2>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="topics-grid">
+        <div class="topic-card">
+          <div class="mark">Lr</div>
+          <h3>Learning that works</h3>
+          <p>Practical approaches to instructional design, facilitation and learner engagement.</p>
         </div>
-    </header>
-
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="section-header"><h2 class="section-title">ABOUT THE NEWSLETTER</h2></div>
-            <div class="about-content">
-                <p class="about-text">The workplace is changing quickly. AI is changing how we work. Leadership expectations are changing. Learning is becoming more personalised. Employees expect more from development. And L&D professionals are being asked to deliver more with less.</p>
-                <p class="about-text highlight">Shawntra explores what actually works.</p>
-                <p class="about-philosophy"><strong>Useful ideas for people who develop people.</strong></p>
-            </div>
+        <div class="topic-card">
+          <div class="mark">Ld</div>
+          <h3>Leadership in practice</h3>
+          <p>Real-world ideas for managers, supervisors and emerging leaders.</p>
         </div>
-    </section>
-
-    <section id="topics" class="topics-section">
-        <div class="container">
-            <div class="section-header"><h2 class="section-title">WHAT YOU'LL FIND HERE</h2></div>
-            <div class="topics-grid">
-                <div class="topic-card"><div class="topic-icon">🎯</div><h3 class="topic-title">LEARNING THAT WORKS</h3><p class="topic-description">Practical approaches to instructional design, facilitation and learner engagement.</p></div>
-                <div class="topic-card"><div class="topic-icon">👥</div><h3 class="topic-title">LEADERSHIP IN PRACTICE</h3><p class="topic-description">Real-world ideas for managers, supervisors and emerging leaders.</p></div>
-                <div class="topic-card"><div class="topic-icon">🧠</div><h3 class="topic-title">THE HUMAN SIDE OF WORK</h3><p class="topic-description">Psychology, behaviour, communication, motivation and workplace relationships.</p></div>
-                <div class="topic-card"><div class="topic-icon">🤖</div><h3 class="topic-title">AI FOR L&D</h3><p class="topic-description">Practical ways to use AI to design, research, create and deliver better learning.</p></div>
-                <div class="topic-card"><div class="topic-icon">📈</div><h3 class="topic-title">CAREER & GROWTH</h3><p class="topic-description">Ideas for professionals navigating career transitions, skills and lifelong learning.</p></div>
-                <div class="topic-card"><div class="topic-icon">🛠️</div><h3 class="topic-title">TOOLS & FRAMEWORKS</h3><p class="topic-description">Simple frameworks, templates, models and techniques that can be applied immediately.</p></div>
-            </div>
+        <div class="topic-card">
+          <div class="mark">Hu</div>
+          <h3>The human side of work</h3>
+          <p>Psychology, behaviour, communication, motivation and workplace relationships.</p>
         </div>
-    </section>
-
-    <section id="latest" class="latest-section">
-        <div class="container">
-            <div class="section-header"><h2 class="section-title">LATEST ISSUE</h2></div>
-            <div class="featured-article">
-                <div class="article-badge">NEW</div>
-                <h3 class="article-title">AI Isn't Replacing L&D — But L&D Professionals Who Use AI Well Will Have an Advantage</h3>
-                <p class="article-excerpt">AI won't replace the human skills that make great learning possible. But it is already changing how we research, design, personalise and deliver learning. The real question isn't whether L&D professionals should use AI — it's whether we learn to use it thoughtfully.</p>
-                <a href="issues/issue-001.html" class="btn btn-primary">READ THE ISSUE</a>
-            </div>
+        <div class="topic-card">
+          <div class="mark">Ai</div>
+          <h3>AI for L&amp;D</h3>
+          <p>Practical ways to use AI to design, research, create and deliver better learning.</p>
         </div>
-    </section>
-
-    <section class="featured-section">
-        <div class="container">
-            <div class="section-header"><h2 class="section-title">FEATURED IDEAS</h2></div>
-            <div class="featured-grid">
-                <article class="article-card"><h3 class="card-title">Stop Designing Training. Start Designing Behaviour Change.</h3><p class="card-excerpt">Training doesn't change organisations. Behaviour change does. Here's how to shift your design mindset from content delivery to actual impact.</p><a href="#" class="card-link">Read More →</a></article>
-                <article class="article-card"><h3 class="card-title">What AI Can Do for an L&D Professional — and What It Can't.</h3><p class="card-excerpt">AI is powerful, but it's not magic. Understanding where AI adds value and where human expertise remains essential is the key to using it well.</p><a href="#" class="card-link">Read More →</a></article>
-                <article class="article-card"><h3 class="card-title">The Difference Between Being Busy and Actually Learning.</h3><p class="card-excerpt">Activity doesn't equal progress. Here's how to tell if you're genuinely developing or just staying occupied with the appearance of growth.</p><a href="#" class="card-link">Read More →</a></article>
-            </div>
+        <div class="topic-card">
+          <div class="mark">Cr</div>
+          <h3>Career &amp; growth</h3>
+          <p>Ideas for professionals navigating career transitions, skills and lifelong learning.</p>
         </div>
-    </section>
-
-    <section id="about-sean" class="about-sean-section">
-        <div class="container">
-            <div class="about-sean-content">
-                <div class="about-sean-text">
-                    <h2 class="section-title">ABOUT SEAN</h2>
-                    <p class="sean-bio">An experienced Learning & Development and Training professional with extensive corporate experience across training, quality, leadership development and capability building.</p>
-                    <p class="sean-expertise">Areas of expertise include L&D, Training, Quality, Facilitation, Leadership Development, Instructional Design, Lean Six Sigma, Organisational Psychology, and AI for Learning.</p>
-                    <p class="sean-philosophy">Shawntra is where I share practical ideas, frameworks and experiments for people who develop people — drawn from real workplace experience and a genuine curiosity about what makes learning and work better.</p>
-                    <a href="https://www.linkedin.com/in/seanbarneslearndevpro/" target="_blank" rel="noopener" class="btn btn-secondary">CONNECT WITH ME ON LINKEDIN</a>
-                </div>
-            </div>
+        <div class="topic-card">
+          <div class="mark">Tf</div>
+          <h3>Tools &amp; frameworks</h3>
+          <p>Simple frameworks, templates, models and techniques you can apply immediately.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="subscribe" class="subscribe-section">
-        <div class="container">
-            <div class="subscribe-content">
-                <h2 class="subscribe-title">Get the next issue in your inbox.</h2>
-                <p class="subscribe-text">One useful idea. One practical framework. One conversation worth having.</p>
-                <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
-      <form action="https://app.kit.com/forms/9804359/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9804359" data-uid="cec0244f30" data-format="inline" data-version="6" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;6&quot;}" min-width="400 500 600 700 800"><div data-style="clean"><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Subscribe</span></button></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow noopener">Built with Kit</a></div></div><style>.formkit-form[data-uid="cec0244f30"] *{box-sizing:border-box;}.formkit-form[data-uid="cec0244f30"]{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.formkit-form[data-uid="cec0244f30"] legend{border:none;font-size:inherit;margin-bottom:10px;padding:0;position:relative;display:table;}.formkit-form[data-uid="cec0244f30"] fieldset{border:0;padding:0.01em 0 0 0;margin:0;min-width:0;}.formkit-form[data-uid="cec0244f30"] body:not(:-moz-handler-blocked) fieldset{display:table-cell;}.formkit-form[data-uid="cec0244f30"] h1,.formkit-form[data-uid="cec0244f30"] h2,.formkit-form[data-uid="cec0244f30"] h3,.formkit-form[data-uid="cec0244f30"] h4,.formkit-form[data-uid="cec0244f30"] h5,.formkit-form[data-uid="cec0244f30"] h6{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="cec0244f30"] h2{font-size:1.5em;margin:1em 0;}.formkit-form[data-uid="cec0244f30"] h3{font-size:1.17em;margin:1em 0;}.formkit-form[data-uid="cec0244f30"] p{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="cec0244f30"] ol:not([template-default]),.formkit-form[data-uid="cec0244f30"] ul:not([template-default]),.formkit-form[data-uid="cec0244f30"] blockquote:not([template-default]){text-align:left;}.formkit-form[data-uid="cec0244f30"] p:not([template-default]),.formkit-form[data-uid="cec0244f30"] hr:not([template-default]),.formkit-form[data-uid="cec0244f30"] blockquote:not([template-default]),.formkit-form[data-uid="cec0244f30"] ol:not([template-default]),.formkit-form[data-uid="cec0244f30"] ul:not([template-default]){color:inherit;font-style:initial;}.formkit-form[data-uid="cec0244f30"] .ordered-list,.formkit-form[data-uid="cec0244f30"] .unordered-list{list-style-position:outside !important;padding-left:1em;}.formkit-form[data-uid="cec0244f30"] .list-item{padding-left:0;}.formkit-form[data-uid="cec0244f30"][data-format="modal"]{display:none;}.formkit-form[data-uid="cec0244f30"][data-format="slide in"]{display:none;}.formkit-form[data-uid="cec0244f30"][data-format="sticky bar"]{display:none;}.formkit-sticky-bar .formkit-form[data-uid="cec0244f30"][data-format="sticky bar"]{display:block;}.formkit-form[data-uid="cec0244f30"] .formkit-input,.formkit-form[data-uid="cec0244f30"] .formkit-select,.formkit-form[data-uid="cec0244f30"] .formkit-checkboxes{width:100%;}.formkit-form[data-uid="cec0244f30"] .formkit-button,.formkit-form[data-uid="cec0244f30"] .formkit-submit{border:0;border-radius:5px;color:#ffffff;cursor:pointer;display:inline-block;text-align:center;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:15px;overflow:hidden;padding:0;position:relative;vertical-align:middle;}.formkit-form[data-uid="cec0244f30"] .formkit-button:hover,.formkit-form[data-uid="cec0244f30"] .formkit-submit:hover,.formkit-form[data-uid="cec0244f30"] .formkit-button:focus,.formkit-form[data-uid="cec0244f30"] .formkit-submit:focus{outline:none;}.formkit-form[data-uid="cec0244f30"] .formkit-button:hover > span,.formkit-form[data-uid="cec0244f30"] .formkit-submit:hover > span,.formkit-form[data-uid="cec0244f30"] .formkit-button:focus > span,.formkit-form[data-uid="cec0244f30"] .formkit-submit:focus > span{background-color:rgba(0,0,0,0.1);}.formkit-form[data-uid="cec0244f30"] .formkit-button > span,.formkit-form[data-uid="cec0244f30"] .formkit-submit > span{display:block;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;padding:12px 24px;}.formkit-form[data-uid="cec0244f30"] .formkit-input{background:#ffffff;font-size:15px;padding:12px;border:1px solid #e3e3e3;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;line-height:1.4;margin:0;-webkit-transition:border-color ease-out 300ms;transition:border-color ease-out 300ms;}.formkit-form[data-uid="cec0244f30"] .formkit-input:focus{outline:none;border-color:#1677be;-webkit-transition:border-color ease 300ms;transition:border-color ease 300ms;}.formkit-form[data-uid="cec0244f30"] .formkit-input::-webkit-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="cec0244f30"] .formkit-input::-moz-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="cec0244f30"] .formkit-input:-ms-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="cec0244f30"] .formkit-input::placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="cec0244f30"] [data-group="dropdown"]{position:relative;display:inline-block;width:100%;}.formkit-form[data-uid="cec0244f30"] [data-group="dropdown"]::before{content:"";top:calc(50% - 2.5px);right:10px;position:absolute;pointer-events:none;border-color:#4f4f4f transparent transparent transparent;border-style:solid;border-width:6px 6px 0 6px;height:0;width:0;z-index:999;}.formkit-form[data-uid="cec0244f30"] [data-group="dropdown"] select{height:auto;width:100%;cursor:pointer;color:#333333;line-height:1.4;margin-bottom:0;padding:0 6px;-webkit-appearance:none;-moz-appearance:none;appearance:none;font-size:15px;padding:12px;padding-right:25px;border:1px solid #e3e3e3;background:#ffffff;}.formkit-form[data-uid="cec0244f30"] [data-group="dropdown"] select:focus{outline:none;}.formkit-form[data-uid="cec0244f30"] [data-group="checkboxes"]{text-align:left;margin:0;}.formkit-form[data-uid="cec0244f30"] [data-group="checkboxes"] [data-group="checkbox"]{margin-bottom:10px;}.formkit-form[data-uid="cec0244f30"] [data-group="checkboxes"] [data-group="checkbox"] *{cursor:pointer;}.formkit-form[data-uid="cec0244f30"] [data-group="checkboxes"] [data-group="checkbox"]:last-of-type{margin-bottom:0;}.formkit-form[data-uid="cec0244f30"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]{display:none;}.formkit-form[data-uid="cec0244f30"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"] + label::after{content:none;}.formkit-form[data-uid="cec0244f30"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::after{border-color:#ffffff;content:"";}.formkit-form[data-uid="cec0244f30"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::before{background:#10bf7a;border-color:#10bf7a;}.formkit-form[data-uid="cec0244f30"] [data-group="checkboxes"] [data-group="checkbox"] label{position:relative;display:inline-block;padding-left:28px;}.formkit-form[data-uid="cec0244f30"] [data-group="checkboxes"] [data-group="checkbox"] label::before,.formkit-form[data-uid="cec0244f30"] [data-group="checkboxes"] [data-group="checkbox"] label::after{position:absolute;content:"";display:inline-block;}.formkit-form[data-uid="cec0244f30"] [data-group="checkboxes"] [data-group="checkbox"] label::before{height:16px;width:16px;border:1px solid #e3e3e3;background:#ffffff;left:0px;top:3px;}.formkit-form[data-uid="cec0244f30"] [data-group="checkboxes"] [data-group="checkbox"] label::after{height:4px;width:8px;border-left:2px solid #4d4d4d;border-bottom:2px solid #4d4d4d;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);left:4px;top:8px;}.formkit-form[data-uid="cec0244f30"] .formkit-alert{background:#f9fafb;border:1px solid #e3e3e3;border-radius:5px;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;list-style:none;margin:25px auto;padding:12px;text-align:center;width:100%;}.formkit-form[data-uid="cec0244f30"] .formkit-alert:empty{display:none;}.formkit-form[data-uid="cec0244f30"] .formkit-alert-success{background:#d3fbeb;border-color:#10bf7a;color:#0c905c;}.formkit-form[data-uid="cec0244f30"] .formkit-alert-error{background:#fde8e2;border-color:#f2643b;color:#ea4110;}.formkit-form[data-uid="cec0244f30"] .formkit-spinner{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:0px;width:0px;margin:0 auto;position:absolute;top:0;left:0;right:0;width:0px;overflow:hidden;text-align:center;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;}.formkit-form[data-uid="cec0244f30"] .formkit-spinner > div{margin:auto;width:12px;height:12px;background-color:#fff;opacity:0.3;border-radius:100%;display:inline-block;-webkit-animation:formkit-bouncedelay-formkit-form-data-uid-cec0244f30- 1.4s infinite ease-in-out both;animation:formkit-bouncedelay-formkit-form-data-uid-cec0244f30- 1.4s infinite ease-in-out both;}.formkit-form[data-uid="cec0244f30"] .formkit-spinner > div:nth-child(1){-webkit-animation-delay:-0.32s;animation-delay:-0.32s;}.formkit-form[data-uid="cec0244f30"] .formkit-spinner > div:nth-child(2){-webkit-animation-delay:-0.16s;animation-delay:-0.16s;}.formkit-form[data-uid="cec0244f30"] .formkit-submit[data-active] .formkit-spinner{opacity:1;height:100%;width:50px;}.formkit-form[data-uid="cec0244f30"] .formkit-submit[data-active] .formkit-spinner ~ span{opacity:0;}.formkit-form[data-uid="cec0244f30"] .formkit-powered-by[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="cec0244f30"] .formkit-powered-by-convertkit-container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;margin:10px 0;position:relative;}.formkit-form[data-uid="cec0244f30"] .formkit-powered-by-convertkit-container[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="cec0244f30"] .formkit-powered-by-convertkit{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ffffff;border-radius:9px;color:#3d3d3d;cursor:pointer;display:block;height:36px;margin:0 auto;opacity:0.95;padding:0;-webkit-text-decoration:none;text-decoration:none;text-indent:100%;-webkit-transition:ease-in-out all 200ms;transition:ease-in-out all 200ms;white-space:nowrap;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:157px;background-repeat:no-repeat;background-position:center;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='133' height='36' viewBox='0 0 133 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.861 25.5C0.735 25.5 0.651 25.416 0.651 25.29V10.548C0.651 10.422 0.735 10.338 0.861 10.338H6.279C9.072 10.338 10.668 11.451 10.668 13.824C10.668 15.819 9.219 16.932 8.001 17.226C7.707 17.268 7.707 17.625 8.022 17.688C9.912 18.108 11.088 19.116 11.088 21.321C11.088 23.715 9.429 25.5 6.426 25.5H0.861ZM5.397 23.085C6.825 23.085 7.518 22.224 7.518 21.006C7.518 19.683 6.825 18.948 5.397 18.948H4.2V23.085H5.397ZM5.313 16.617C6.51 16.617 7.245 15.945 7.245 14.601C7.245 13.383 6.51 12.753 5.25 12.753H4.2V16.617H5.313ZM17.9758 23.883C17.9758 23.568 17.6608 23.505 17.5348 23.799C17.0308 24.954 16.1698 25.731 14.5528 25.731C12.8728 25.731 12.0958 24.471 12.0958 22.707V14.937C12.0958 14.811 12.1798 14.727 12.3058 14.727H15.2248C15.3508 14.727 15.4348 14.811 15.4348 14.937V21.657C15.4348 22.581 15.7708 23.022 16.4638 23.022C17.1778 23.022 17.6188 22.581 17.6188 21.657V14.937C17.6188 14.811 17.7028 14.727 17.8288 14.727H20.7478C20.8738 14.727 20.9578 14.811 20.9578 14.937V25.29C20.9578 25.416 20.8738 25.5 20.7478 25.5H18.1858C18.0598 25.5 17.9758 25.416 17.9758 25.29V23.883ZM25.6141 25.29C25.6141 25.416 25.5301 25.5 25.4041 25.5H22.4851C22.3591 25.5 22.2751 25.416 22.2751 25.29V14.937C22.2751 14.811 22.3591 14.727 22.4851 14.727H25.4041C25.5301 14.727 25.6141 14.811 25.6141 14.937V25.29ZM23.9131 13.74C22.8001 13.74 22.0441 12.942 22.0441 11.934C22.0441 10.926 22.8001 10.107 23.9131 10.107C25.0051 10.107 25.7611 10.926 25.7611 11.934C25.7611 12.942 25.0051 13.74 23.9131 13.74ZM26.7883 10.548C26.7883 10.422 26.8723 10.338 26.9983 10.338H29.9173C30.0433 10.338 30.1273 10.422 30.1273 10.548V22.056C30.1273 22.749 30.2533 23.085 30.8203 23.085C31.0093 23.085 31.1983 23.043 31.3663 23.001C31.5133 22.959 31.6183 22.959 31.6183 23.127V25.059C31.6183 25.164 31.5763 25.269 31.4923 25.311C30.9673 25.521 30.2953 25.71 29.5813 25.71C27.7123 25.71 26.7883 24.639 26.7883 22.476V10.548ZM32.4237 14.727C32.8227 14.727 32.9277 14.538 32.9697 14.055L33.1167 12.039C33.1167 11.913 33.2217 11.829 33.3477 11.829H35.8887C36.0147 11.829 36.0987 11.913 36.0987 12.039V14.517C36.0987 14.643 36.1827 14.727 36.3087 14.727H38.2827C38.4087 14.727 38.4927 14.811 38.4927 14.937V16.659C38.4927 16.785 38.4087 16.869 38.2827 16.869H36.0777V22.056C36.0777 22.875 36.5397 23.085 37.0647 23.085C37.4847 23.085 37.9467 22.938 38.3247 22.707C38.4717 22.623 38.5767 22.665 38.5767 22.833V24.828C38.5767 24.933 38.5347 25.017 38.4507 25.08C37.8417 25.458 36.9807 25.71 36.0357 25.71C34.2927 25.71 32.7387 24.912 32.7387 22.476V16.869H31.8567C31.7307 16.869 31.6467 16.785 31.6467 16.659V14.937C31.6467 14.811 31.7307 14.727 31.8567 14.727H32.4237ZM51.3808 14.727C51.5068 14.727 51.5908 14.79 51.6118 14.916L52.3888 19.851L52.5778 21.174C52.6198 21.468 52.9558 21.468 52.9768 21.174C53.0398 20.712 53.0818 20.271 53.1658 19.83L53.8798 14.916C53.9008 14.79 53.9848 14.727 54.1108 14.727H56.6728C56.8198 14.727 56.8828 14.811 56.8618 14.958L54.6778 25.311C54.6568 25.437 54.5728 25.5 54.4468 25.5H51.3178C51.1918 25.5 51.1078 25.437 51.0868 25.311L50.1208 20.082L49.8898 18.633C49.8688 18.444 49.6588 18.444 49.6378 18.633L49.4068 20.103L48.5458 25.311C48.5248 25.437 48.4408 25.5 48.3148 25.5H45.2068C45.0808 25.5 44.9968 25.437 44.9758 25.311L42.8128 14.958C42.7918 14.811 42.8548 14.727 43.0018 14.727H45.9628C46.0888 14.727 46.1728 14.79 46.1938 14.916L46.9288 19.83C47.0128 20.271 47.0758 20.754 47.1388 21.195C47.2018 21.51 47.4748 21.531 47.5378 21.195L47.7478 19.872L48.6088 14.916C48.6298 14.79 48.7138 14.727 48.8398 14.727H51.3808ZM61.1582 25.29C61.1582 25.416 61.0742 25.5 60.9482 25.5H58.0292C57.9032 25.5 57.8192 25.416 57.8192 25.29V14.937C57.8192 14.811 57.9032 14.727 58.0292 14.727H60.9482C61.0742 14.727 61.1582 14.811 61.1582 14.937V25.29ZM59.4572 13.74C58.3442 13.74 57.5882 12.942 57.5882 11.934C57.5882 10.926 58.3442 10.107 59.4572 10.107C60.5492 10.107 61.3052 10.926 61.3052 11.934C61.3052 12.942 60.5492 13.74 59.4572 13.74ZM62.8154 14.727C63.2144 14.727 63.3194 14.538 63.3614 14.055L63.5084 12.039C63.5084 11.913 63.6134 11.829 63.7394 11.829H66.2804C66.4064 11.829 66.4904 11.913 66.4904 12.039V14.517C66.4904 14.643 66.5744 14.727 66.7004 14.727H68.6744C68.8004 14.727 68.8844 14.811 68.8844 14.937V16.659C68.8844 16.785 68.8004 16.869 68.6744 16.869H66.4694V22.056C66.4694 22.875 66.9314 23.085 67.4564 23.085C67.8764 23.085 68.3384 22.938 68.7164 22.707C68.8634 22.623 68.9684 22.665 68.9684 22.833V24.828C68.9684 24.933 68.9264 25.017 68.8424 25.08C68.2334 25.458 67.3724 25.71 66.4274 25.71C64.6844 25.71 63.1304 24.912 63.1304 22.476V16.869H62.2484C62.1224 16.869 62.0384 16.785 62.0384 16.659V14.937C62.0384 14.811 62.1224 14.727 62.2484 14.727H62.8154ZM73.4298 16.323C73.4298 16.638 73.7868 16.68 73.9128 16.407C74.3748 15.315 75.1308 14.496 76.6008 14.496C78.2178 14.496 78.9528 15.609 78.9528 17.373V25.29C78.9528 25.416 78.8688 25.5 78.7428 25.5H75.8238C75.6978 25.5 75.6138 25.416 75.6138 25.29V18.633C75.6138 17.709 75.2778 17.268 74.5848 17.268C73.8708 17.268 73.4298 17.709 73.4298 18.633V25.29C73.4298 25.416 73.3458 25.5 73.2198 25.5H70.3008C70.1748 25.5 70.0908 25.416 70.0908 25.29V10.548C70.0908 10.422 70.1748 10.338 70.3008 10.338H73.2198C73.3458 10.338 73.4298 10.422 73.4298 10.548V16.323Z' fill='%231E1E1E'/%3E%3Cpath d='M100.132 16.3203C105.58 17.3761 107.272 22.4211 107.318 27.4961C107.318 27.6101 107.226 27.7041 107.112 27.7041H100.252C100.138 27.7041 100.046 27.6121 100.046 27.5001C100.026 23.5629 99.3877 20.0896 95.4865 19.9396C95.3705 19.9356 95.2725 20.0276 95.2725 20.1456V27.5001C95.2725 27.6141 95.1806 27.7061 95.0666 27.7061H88.206C88.092 27.7061 88 27.6141 88 27.5001V8.75585C88 8.64187 88.092 8.54989 88.206 8.54989H95.0686C95.1826 8.54989 95.2745 8.64187 95.2745 8.75585V15.7764C95.2745 15.8804 95.3585 15.9644 95.4625 15.9644C95.5445 15.9644 95.6185 15.9104 95.6425 15.8324C97.4081 10.0416 100.709 8.58588 106.07 8.55189C106.184 8.55189 106.276 8.64387 106.276 8.75785V15.7604C106.276 15.8744 106.184 15.9664 106.07 15.9664H100.166C100.066 15.9664 99.9856 16.0464 99.9856 16.1464C99.9856 16.2304 100.048 16.3043 100.132 16.3203ZM118.918 20.7095V16.1704C118.918 16.0564 119.01 15.9644 119.124 15.9644H124.173C124.273 15.9644 124.353 15.8844 124.353 15.7844C124.353 15.6985 124.291 15.6245 124.207 15.6085C120.256 14.8246 118.432 12.5511 118.37 8.75585C118.368 8.64387 118.458 8.54989 118.572 8.54989H125.986C126.1 8.54989 126.192 8.64187 126.192 8.75585V11.9532C126.192 12.0672 126.284 12.1592 126.398 12.1592H130.649C130.763 12.1592 130.855 12.2511 130.855 12.3651V15.7624C130.855 15.8764 130.763 15.9684 130.649 15.9684H126.398C126.284 15.9684 126.192 16.0604 126.192 16.1744V19.8356C126.192 21.1294 126.986 21.5553 128.04 21.5553C129.692 21.5553 131.323 20.8114 131.977 20.4735C132.113 20.4035 132.277 20.5015 132.277 20.6555V26.3543C132.277 26.5063 132.193 26.6463 132.059 26.7183C131.413 27.0582 129.418 28 127.136 28C122.435 27.996 118.918 26.0824 118.918 20.7095ZM109.266 27.4981V16.1704C109.266 16.0564 109.358 15.9644 109.472 15.9644H116.334C116.448 15.9644 116.54 16.0564 116.54 16.1704V27.4981C116.54 27.6121 116.448 27.7041 116.334 27.7041H109.472C109.358 27.7021 109.266 27.6101 109.266 27.4981ZM108.876 11.4913C108.876 13.4189 110.238 14.9826 112.853 14.9826C115.469 14.9826 116.83 13.4189 116.83 11.4913C116.83 9.56369 115.471 8 112.853 8C110.238 8 108.876 9.56369 108.876 11.4913Z' fill='%231E1E1E'/%3E%3C/svg%3E");}.formkit-form[data-uid="cec0244f30"] .formkit-powered-by-convertkit:hover,.formkit-form[data-uid="cec0244f30"] .formkit-powered-by-convertkit:focus{background-color:#ffffff;-webkit-transform:scale(1.025) perspective(1px);-ms-transform:scale(1.025) perspective(1px);transform:scale(1.025) perspective(1px);opacity:1;}.formkit-form[data-uid="cec0244f30"] .formkit-powered-by-convertkit[data-variant="dark"],.formkit-form[data-uid="cec0244f30"] .formkit-powered-by-convertkit[data-variant="light"]{background-color:transparent;border-color:transparent;width:133px;}.formkit-form[data-uid="cec0244f30"] .formkit-powered-by-convertkit[data-variant="light"]{color:#ffffff;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='133' height='36' viewBox='0 0 133 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.861 25.5C0.735 25.5 0.651 25.416 0.651 25.29V10.548C0.651 10.422 0.735 10.338 0.861 10.338H6.279C9.072 10.338 10.668 11.451 10.668 13.824C10.668 15.819 9.219 16.932 8.001 17.226C7.707 17.268 7.707 17.625 8.022 17.688C9.912 18.108 11.088 19.116 11.088 21.321C11.088 23.715 9.429 25.5 6.426 25.5H0.861ZM5.397 23.085C6.825 23.085 7.518 22.224 7.518 21.006C7.518 19.683 6.825 18.948 5.397 18.948H4.2V23.085H5.397ZM5.313 16.617C6.51 16.617 7.245 15.945 7.245 14.601C7.245 13.383 6.51 12.753 5.25 12.753H4.2V16.617H5.313ZM17.9758 23.883C17.9758 23.568 17.6608 23.505 17.5348 23.799C17.0308 24.954 16.1698 25.731 14.5528 25.731C12.8728 25.731 12.0958 24.471 12.0958 22.707V14.937C12.0958 14.811 12.1798 14.727 12.3058 14.727H15.2248C15.3508 14.727 15.4348 14.811 15.4348 14.937V21.657C15.4348 22.581 15.7708 23.022 16.4638 23.022C17.1778 23.022 17.6188 22.581 17.6188 21.657V14.937C17.6188 14.811 17.7028 14.727 17.8288 14.727H20.7478C20.8738 14.727 20.9578 14.811 20.9578 14.937V25.29C20.9578 25.416 20.8738 25.5 20.7478 25.5H18.1858C18.0598 25.5 17.9758 25.416 17.9758 25.29V23.883ZM25.6141 25.29C25.6141 25.416 25.5301 25.5 25.4041 25.5H22.4851C22.3591 25.5 22.2751 25.416 22.2751 25.29V14.937C22.2751 14.811 22.3591 14.727 22.4851 14.727H25.4041C25.5301 14.727 25.6141 14.811 25.6141 14.937V25.29ZM23.9131 13.74C22.8001 13.74 22.0441 12.942 22.0441 11.934C22.0441 10.926 22.8001 10.107 23.9131 10.107C25.0051 10.107 25.7611 10.926 25.7611 11.934C25.7611 12.942 25.0051 13.74 23.9131 13.74ZM26.7883 10.548C26.7883 10.422 26.8723 10.338 26.9983 10.338H29.9173C30.0433 10.338 30.1273 10.422 30.1273 10.548V22.056C30.1273 22.749 30.2533 23.085 30.8203 23.085C31.0093 23.085 31.1983 23.043 31.3663 23.001C31.5133 22.959 31.6183 22.959 31.6183 23.127V25.059C31.6183 25.164 31.5763 25.269 31.4923 25.311C30.9673 25.521 30.2953 25.71 29.5813 25.71C27.7123 25.71 26.7883 24.639 26.7883 22.476V10.548ZM32.4237 14.727C32.8227 14.727 32.9277 14.538 32.9697 14.055L33.1167 12.039C33.1167 11.913 33.2217 11.829 33.3477 11.829H35.8887C36.0147 11.829 36.0987 11.913 36.0987 12.039V14.517C36.0987 14.643 36.1827 14.727 36.3087 14.727H38.2827C38.4087 14.727 38.4927 14.811 38.4927 14.937V16.659C38.4927 16.785 38.4087 16.869 38.2827 16.869H36.0777V22.056C36.0777 22.875 36.5397 23.085 37.0647 23.085C37.4847 23.085 37.9467 22.938 38.3247 22.707C38.4717 22.623 38.5767 22.665 38.5767 22.833V24.828C38.5767 24.933 38.5347 25.017 38.4507 25.08C37.8417 25.458 36.9807 25.71 36.0357 25.71C34.2927 25.71 32.7387 24.912 32.7387 22.476V16.869H31.8567C31.7307 16.869 31.6467 16.785 31.6467 16.659V14.937C31.6467 14.811 31.7307 14.727 31.8567 14.727H32.4237ZM51.3808 14.727C51.5068 14.727 51.5908 14.79 51.6118 14.916L52.3888 19.851L52.5778 21.174C52.6198 21.468 52.9558 21.468 52.9768 21.174C53.0398 20.712 53.0818 20.271 53.1658 19.83L53.8798 14.916C53.9008 14.79 53.9848 14.727 54.1108 14.727H56.6728C56.8198 14.727 56.8828 14.811 56.8618 14.958L54.6778 25.311C54.6568 25.437 54.5728 25.5 54.4468 25.5H51.3178C51.1918 25.5 51.1078 25.437 51.0868 25.311L50.1208 20.082L49.8898 18.633C49.8688 18.444 49.6588 18.444 49.6378 18.633L49.4068 20.103L48.5458 25.311C48.5248 25.437 48.4408 25.5 48.3148 25.5H45.2068C45.0808 25.5 44.9968 25.437 44.9758 25.311L42.8128 14.958C42.7918 14.811 42.8548 14.727 43.0018 14.727H45.9628C46.0888 14.727 46.1728 14.79 46.1938 14.916L46.9288 19.83C47.0128 20.271 47.0758 20.754 47.1388 21.195C47.2018 21.51 47.4748 21.531 47.5378 21.195L47.7478 19.872L48.6088 14.916C48.6298 14.79 48.7138 14.727 48.8398 14.727H51.3808ZM61.1582 25.29C61.1582 25.416 61.0742 25.5 60.9482 25.5H58.0292C57.9032 25.5 57.8192 25.416 57.8192 25.29V14.937C57.8192 14.811 57.9032 14.727 58.0292 14.727H60.9482C61.0742 14.727 61.1582 14.811 61.1582 14.937V25.29ZM59.4572 13.74C58.3442 13.74 57.5882 12.942 57.5882 11.934C57.5882 10.926 58.3442 10.107 59.4572 10.107C60.5492 10.107 61.3052 10.926 61.3052 11.934C61.3052 12.942 60.5492 13.74 59.4572 13.74ZM62.8154 14.727C63.2144 14.727 63.3194 14.538 63.3614 14.055L63.5084 12.039C63.5084 11.913 63.6134 11.829 63.7394 11.829H66.2804C66.4064 11.829 66.4904 11.913 66.4904 12.039V14.517C66.4904 14.643 66.5744 14.727 66.7004 14.727H68.6744C68.8004 14.727 68.8844 14.811 68.8844 14.937V16.659C68.8844 16.785 68.8004 16.869 68.6744 16.869H66.4694V22.056C66.4694 22.875 66.9314 23.085 67.4564 23.085C67.8764 23.085 68.3384 22.938 68.7164 22.707C68.8634 22.623 68.9684 22.665 68.9684 22.833V24.828C68.9684 24.933 68.9264 25.017 68.8424 25.08C68.2334 25.458 67.3724 25.71 66.4274 25.71C64.6844 25.71 63.1304 24.912 63.1304 22.476V16.869H62.2484C62.1224 16.869 62.0384 16.785 62.0384 16.659V14.937C62.0384 14.811 62.1224 14.727 62.2484 14.727H62.8154ZM73.4298 16.323C73.4298 16.638 73.7868 16.68 73.9128 16.407C74.3748 15.315 75.1308 14.496 76.6008 14.496C78.2178 14.496 78.9528 15.609 78.9528 17.373V25.29C78.9528 25.416 78.8688 25.5 78.7428 25.5H75.8238C75.6978 25.5 75.6138 25.416 75.6138 25.29V18.633C75.6138 17.709 75.2778 17.268 74.5848 17.268C73.8708 17.268 73.4298 17.709 73.4298 18.633V25.29C73.4298 25.416 73.3458 25.5 73.2198 25.5H70.3008C70.1748 25.5 70.0908 25.416 70.0908 25.29V10.548C70.0908 10.422 70.1748 10.338 70.3008 10.338H73.2198C73.3458 10.338 73.4298 10.422 73.4298 10.548V16.323Z' fill='white'/%3E%3Cpath d='M100.132 16.3203C105.58 17.3761 107.272 22.4211 107.318 27.4961C107.318 27.6101 107.226 27.7041 107.112 27.7041H100.252C100.138 27.7041 100.046 27.6121 100.046 27.5001C100.026 23.5629 99.3877 20.0896 95.4865 19.9396C95.3705 19.9356 95.2725 20.0276 95.2725 20.1456V27.5001C95.2725 27.6141 95.1806 27.7061 95.0666 27.7061H88.206C88.092 27.7061 88 27.6141 88 27.5001V8.75585C88 8.64187 88.092 8.54989 88.206 8.54989H95.0686C95.1826 8.54989 95.2745 8.64187 95.2745 8.75585V15.7764C95.2745 15.8804 95.3585 15.9644 95.4625 15.9644C95.5445 15.9644 95.6185 15.9104 95.6425 15.8324C97.4081 10.0416 100.709 8.58588 106.07 8.55189C106.184 8.55189 106.276 8.64387 106.276 8.75785V15.7604C106.276 15.8744 106.184 15.9664 106.07 15.9664H100.166C100.066 15.9664 99.9856 16.0464 99.9856 16.1464C99.9856 16.2304 100.048 16.3043 100.132 16.3203ZM118.918 20.7095V16.1704C118.918 16.0564 119.01 15.9644 119.124 15.9644H124.173C124.273 15.9644 124.353 15.8844 124.353 15.7844C124.353 15.6985 124.291 15.6245 124.207 15.6085C120.256 14.8246 118.432 12.5511 118.37 8.75585C118.368 8.64387 118.458 8.54989 118.572 8.54989H125.986C126.1 8.54989 126.192 8.64187 126.192 8.75585V11.9532C126.192 12.0672 126.284 12.1592 126.398 12.1592H130.649C130.763 12.1592 130.855 12.2511 130.855 12.3651V15.7624C130.855 15.8764 130.763 15.9684 130.649 15.9684H126.398C126.284 15.9684 126.192 16.0604 126.192 16.1744V19.8356C126.192 21.1294 126.986 21.5553 128.04 21.5553C129.692 21.5553 131.323 20.8114 131.977 20.4735C132.113 20.4035 132.277 20.5015 132.277 20.6555V26.3543C132.277 26.5063 132.193 26.6463 132.059 26.7183C131.413 27.0582 129.418 28 127.136 28C122.435 27.996 118.918 26.0824 118.918 20.7095ZM109.266 27.4981V16.1704C109.266 16.0564 109.358 15.9644 109.472 15.9644H116.334C116.448 15.9644 116.54 16.0564 116.54 16.1704V27.4981C116.54 27.6121 116.448 27.7041 116.334 27.7041H109.472C109.358 27.7021 109.266 27.6101 109.266 27.4981ZM108.876 11.4913C108.876 13.4189 110.238 14.9826 112.853 14.9826C115.469 14.9826 116.83 13.4189 116.83 11.4913C116.83 9.56369 115.471 8 112.853 8C110.238 8 108.876 9.56369 108.876 11.4913Z' fill='white'/%3E%3C/svg%3E");}@-webkit-keyframes formkit-bouncedelay-formkit-form-data-uid-cec0244f30-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}@keyframes formkit-bouncedelay-formkit-form-data-uid-cec0244f30-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}.formkit-form[data-uid="cec0244f30"] blockquote{padding:10px 20px;margin:0 0 20px;border-left:5px solid #e1e1e1;}.formkit-form[data-uid="cec0244f30"] .seva-custom-content{padding:15px;font-size:16px;color:#fff;mix-blend-mode:difference;}.formkit-form[data-uid="cec0244f30"] .formkit-modal.guard{max-width:420px;width:100%;} .formkit-form[data-uid="cec0244f30"]{max-width:700px;}.formkit-form[data-uid="cec0244f30"] [data-style="clean"]{width:100%;}.formkit-form[data-uid="cec0244f30"] .formkit-fields{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0 auto;}.formkit-form[data-uid="cec0244f30"] .formkit-field,.formkit-form[data-uid="cec0244f30"] .formkit-submit{margin:0 0 15px 0;-webkit-flex:1 0 100%;-ms-flex:1 0 100%;flex:1 0 100%;}.formkit-form[data-uid="cec0244f30"] .formkit-powered-by-convertkit-container{margin:0;}.formkit-form[data-uid="cec0244f30"] .formkit-submit{position:static;}.formkit-form[data-uid="cec0244f30"][min-width~="700"] [data-style="clean"],.formkit-form[data-uid="cec0244f30"][min-width~="800"] [data-style="clean"]{padding:10px;padding-top:56px;}.formkit-form[data-uid="cec0244f30"][min-width~="700"] .formkit-fields[data-stacked="false"],.formkit-form[data-uid="cec0244f30"][min-width~="800"] .formkit-fields[data-stacked="false"]{margin-left:-5px;margin-right:-5px;}.formkit-form[data-uid="cec0244f30"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="cec0244f30"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="cec0244f30"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-submit,.formkit-form[data-uid="cec0244f30"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-submit{margin:0 5px 15px 5px;}.formkit-form[data-uid="cec0244f30"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="cec0244f30"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-field{-webkit-flex:100 1 auto;-ms-flex:100 1 auto;flex:100 1 auto;}.formkit-form[data-uid="cec0244f30"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-submit,.formkit-form[data-uid="cec0244f30"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-submit{-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;} </style></form>
-                <p class="subscribe-note">Free to subscribe. Unsubscribe anytime. No spam, ever.</p>
-            </div>
+  <section id="latest">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Latest issue</span>
+        <h2>Fresh out of the bottle</h2>
+      </div>
+      <div class="issue-feature">
+        <span class="badge">NEW · ISSUE 001</span>
+        <h3>AI Isn't Replacing L&amp;D — But L&amp;D Professionals Who Use AI Well Will Have an Advantage</h3>
+        <p>AI won't replace the human skills that make great learning possible. But it is already changing how we research, design, personalise and deliver learning. The real question isn't whether L&amp;D professionals should use AI — it's whether we learn to use it thoughtfully.</p>
+        <a class="btn btn-primary" href="https://crabbyfiddlestix.github.io/Shawntra/issues/issue-001.html">Read the issue</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ideas">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Featured ideas</span>
+        <h2>Worth a second read</h2>
+      </div>
+      <div class="idea-list">
+        <div class="idea-row">
+          <div class="num">01</div>
+          <div>
+            <h3>Stop designing training. Start designing behaviour change.</h3>
+            <p>Training doesn't change organisations. Behaviour change does. Here's how to shift your design mindset from content delivery to actual impact.</p>
+          </div>
+          <div class="arrow"><a href="#" aria-label="Read more">→</a></div>
         </div>
-    </section>
-
-    <section id="archive" class="archive-section">
-        <div class="container">
-            <div class="section-header"><h2 class="section-title">ARCHIVE</h2></div>
-            <div class="archive-list">
-                <article class="archive-item">
-                    <div class="archive-meta"><span class="issue-number">Issue #001</span><span class="issue-date">August 2026</span></div>
-                    <h3 class="archive-title">AI Isn't Replacing L&D — But L&D Professionals Who Use AI Well Will Have an Advantage</h3>
-                    <p class="archive-excerpt">AI won't replace the human skills that make great learning possible. But it is already changing how we research, design, personalise and deliver learning.</p>
-                    <a href="issues/issue-001.html" class="archive-link">Read Issue →</a>
-                </article>
-            </div>
+        <div class="idea-row">
+          <div class="num">02</div>
+          <div>
+            <h3>What AI can do for an L&amp;D professional — and what it can't.</h3>
+            <p>AI is powerful, but it's not magic. Understanding where AI adds value and where human expertise remains essential is the key to using it well.</p>
+          </div>
+          <div class="arrow"><a href="#" aria-label="Read more">→</a></div>
         </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3 class="footer-title">Shawntra</h3>
-                    <p class="footer-author">Sean Barnes</p>
-                    <p class="footer-topics">Learning | Leadership | Psychology | AI</p>
-                    <p class="footer-tagline">A message in a bottle</p>
-                </div>
-                <div class="footer-links">
-                    <a href="https://www.linkedin.com/in/seanbarneslearndevpro/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-                    <a href="#subscribe" class="footer-link">Subscribe</a>
-                </div>
-            </div>
-            <div class="footer-bottom"><p class="copyright">Copyright 2026 Sean Barnes</p></div>
+        <div class="idea-row">
+          <div class="num">03</div>
+          <div>
+            <h3>The difference between being busy and actually learning.</h3>
+            <p>Activity doesn't equal progress. Here's how to tell if you're genuinely developing or just staying occupied with the appearance of growth.</p>
+          </div>
+          <div class="arrow"><a href="#" aria-label="Read more">→</a></div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script src="js/main.js"></script>
+  <section id="about-sean">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Who's writing this</span>
+        <h2>About Sean</h2>
+      </div>
+      <div class="sean-panel">
+        <div class="seal">
+          <img src="images/sean-headshot.jpg" alt="Portrait of Sean Barnes">
+        </div>
+        <div class="sean-text">
+          <h3>Sean Barnes</h3>
+          <div class="role">Learning &amp; Development · Training &amp; Quality</div>
+          <p>An experienced Learning &amp; Development and Training professional with extensive corporate experience across training, quality, leadership development and capability building.</p>
+          <div class="tags">
+            <span class="tag">L&amp;D</span>
+            <span class="tag">Training</span>
+            <span class="tag">Quality</span>
+            <span class="tag">Facilitation</span>
+            <span class="tag">Leadership Development</span>
+            <span class="tag">Instructional Design</span>
+            <span class="tag">Lean Six Sigma</span>
+            <span class="tag">Organisational Psychology</span>
+            <span class="tag">AI for Learning</span>
+          </div>
+          <p>Shawntra is where I share practical ideas, frameworks and experiments for people who develop people — drawn from real workplace experience and a genuine curiosity about what makes learning and work better.</p>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/seanbarneslearndevpro/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="subscribe">
+    <div class="wrap">
+      <div class="subscribe-panel">
+        <h2>Get the next issue in your inbox.</h2>
+        <p>One useful idea. One practical framework. One conversation worth having.</p>
+        <a class="btn btn-primary" href="#">Subscribe</a>
+        <div class="fineprint">Free to subscribe. Unsubscribe anytime. No spam, ever.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="archive">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Archive</span>
+        <h2>Every issue, in one place</h2>
+      </div>
+      <div class="archive-item">
+        <div>
+          <div class="meta">Issue #001 · August 2026</div>
+          <h3>AI Isn't Replacing L&amp;D — But L&amp;D Professionals Who Use AI Well Will Have an Advantage</h3>
+        </div>
+        <a href="https://crabbyfiddlestix.github.io/Shawntra/issues/issue-001.html">Read issue →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-row">
+      <div>
+        <div class="footer-brand">Shawntra</div>
+        <div class="footer-sub">Sean Barnes · Learning | Leadership | Psychology | AI</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/seanbarneslearndevpro/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#subscribe">Subscribe</a>
+      </div>
+    </div>
+    <div class="copyright">Copyright 2026 Sean Barnes</div>
+  </div>
+</footer>
+
 </body>
-</html> 
+</html>

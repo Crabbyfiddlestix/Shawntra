@@ -73,15 +73,21 @@
     justify-content:space-between;
     gap:16px;
   }
-  .brand{
-    font-family:'Fraunces',serif;
-    font-weight:600;
-    font-size:20px;
-    letter-spacing:0.06em;
-    color:var(--ink);
+  .brand-logo{
+    display:inline-flex;
+    align-items:center;
     text-decoration:none;
+    transition:transform 0.2s ease, filter 0.2s ease;
   }
-  .brand:hover{ text-decoration:none; opacity:0.8; }
+  .brand-logo img{
+    height:54px; /* Increased height for high visibility */
+    width:auto;
+    filter:drop-shadow(0 2px 4px rgba(28,43,51,0.08));
+  }
+  .brand-logo:hover{
+    transform:translateY(-1px);
+    filter:drop-shadow(0 4px 10px rgba(217,142,63,0.25)); /* Warm amber glow on hover */
+  }
   nav.links{
     display:flex;
     gap:22px;
